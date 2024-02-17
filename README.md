@@ -1,1 +1,1 @@
-"Initialer Commit" 
+"Domain functions for JAZ & holiday calculations"

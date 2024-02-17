@@ -138,7 +138,31 @@ function berechneUrlaub(
   return urlaubsanspruch;
 }
 
+function reduceUrlaubValues(...objects) {
+  return objects.reduce((accumulator, currentValue) => {
+    // Überprüfen, ob das aktuelle Objekt einen Wert hat
+    if (currentValue && typeof currentValue.value === "number") {
+      // Addiere den Wert des aktuellen Objekts zum Akkumulator
+      accumulator += currentValue.value;
+    }
+    return Math.ceil(accumulator);
+  }, 0); // Starten Sie den Akkumulator mit 0
+}
+
+function reduceDecimals(...objects) {
+  return objects.reduce((accumulator, currentValue) => {
+    // Überprüfen, ob das aktuelle Objekt einen Wert hat
+    if (currentValue && typeof currentValue.value === "number") {
+      // Addiere den Wert des aktuellen Objekts zum Akkumulator
+      accumulator += currentValue.value;
+    }
+    return Math.round(accumulator);
+  }, 0); // Starten Sie den Akkumulator mit 0
+}
+
 module.exports = {
+  reduceDecimals,
+  reduceUrlaubValues,
   berechneUrlaub,
   berechneVolleMonate,
   convertToJSDate,
